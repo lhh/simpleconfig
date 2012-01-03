@@ -1,0 +1,16 @@
+The simpleconfig embeddable library is a reusable API which can be
+called from dynamically loaded modules.
+
+The configuration file format is like so:
+
+identifier = "value";  # Assignment
+
+context {
+	identifier2 = "value2";		# Assignment within a context.
+
+	subcontext {
+		id3 = "val3";
+	}
+}
+
+
