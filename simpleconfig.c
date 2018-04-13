@@ -427,7 +427,9 @@ _sc_parse(const char *filename, config_info_t **config)
 		else 
 			ret = 1;
 	} else {
-		ret = 1;
+		yyin = stdin;
+		ret = yyparse();
+		/* ret = 1; */
 	}
 
 	c = malloc(sizeof(*c));
