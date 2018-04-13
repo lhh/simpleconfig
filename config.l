@@ -4,7 +4,7 @@
 #include <errno.h>
 #include <assert.h>
 #include "config-stack.h"
-#include "y.tab.h"
+#include "config.tab.h"
 #include "simpleconfig.h"
 
 /* Some distributions can't use the output from flex without help */
