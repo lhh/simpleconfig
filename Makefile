@@ -1,12 +1,16 @@
-CFLAGS=-ggdb -DSTANDALONE -Werror
+CFLAGS=-ggdb -Werror
+STANDALONE_CFLAGS=-DSTANDALONE
 OBJS_LIB=config.tab.o simpleconfig.o
 
 all: config libsimpleconfig.a
 
-config: $(OBJS_LIB) config.o
+config: $(OBJS_LIB) config-standalone.o
 	gcc -o $@ $^
 
-libsimpleconfig.a: $(OBJS_LIB)
+%-standalone.o: %.c
+	gcc ${CFLAGS} ${STANDALONE_CFLAGS} -c -o $@ $^
+
+libsimpleconfig.a: $(OBJS_LIB) config.o
 	ar -rc $@ $^
 
 %.o: %.c
