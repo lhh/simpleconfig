@@ -238,6 +238,20 @@ top:
 	}
 
 	/* No more slashes */
+	/* Look for counts of nodes */
+	if (ptr[0] == '#') {
+		++ptr;
+		curr_index = 0;
+		for (n = node; n; n = n->next) {
+			if (!strcasecmp(n->id, ptr))
+				++curr_index;
+		}
+		if (curr_index) {
+			snprintf(value, valuesz, "%d", curr_index);
+			return 0;
+		}
+		return 1;
+	}
 
 	if (ptr[0] != '@') {
 
@@ -304,11 +318,6 @@ top:
 		++ptr;
 		/* count of # of value matches */
 		strncpy(buf, ptr, sizeof(buf));
-		bracket = strchr(buf, '[');
-		if (bracket) {
-			/* Error! */
-			return 1;
-		}
 		curr_index = 0;
 		for (v = values; v; v = v->next) {
 			if (!strcasecmp(v->id, buf))
