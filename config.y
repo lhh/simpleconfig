@@ -19,8 +19,8 @@ _sc_value_add(char *id, char *val, struct value **list)
 	memset(v, 0, sizeof(*v));
 	v->id = id;
 	v->val = val;
-	//snprintf(v->id, sizeof(v->id), "%s", id);
-	//snprintf(v->val, sizeof(v->val), "%s", val);
+	//snprintf(v->id, sizeof(v->id)-1, "%s", id);
+	//snprintf(v->val, sizeof(v->val)-1, "%s", val);
 	//printf("add %s %s on to %p\n", id, val, *list);
 
 	v->next = *list;
@@ -43,7 +43,7 @@ _sc_node_add(char *id, char *val, struct value *vallist,
 	//printf("nodes %p values %p\n", nodelist, vallist);
 
 	memset(n, 0, sizeof(*n));
-	//snprintf(n->id, sizeof(n->id), "%s", id);
+	//snprintf(n->id, sizeof(n->id)-1, "%s", id);
 	n->id = id; /* malloc'd during parsing */
 	n->val = val; /* malloc'd during parsing */
 	n->values = vallist;

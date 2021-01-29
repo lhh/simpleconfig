@@ -247,7 +247,7 @@ top:
 				++curr_index;
 		}
 		if (curr_index) {
-			snprintf(value, valuesz, "%d", curr_index);
+			snprintf(value, valuesz-1, "%d", curr_index);
 			return 0;
 		}
 		return 1;
@@ -324,7 +324,7 @@ top:
 				curr_index++;
 		}
 		if (curr_index) {
-			snprintf(value, valuesz, "%d", curr_index);
+			snprintf(value, valuesz-1, "%d", curr_index);
 			return 0;
 		}
 		return 1;
@@ -364,7 +364,7 @@ top:
 		++curr_index;
 		if (req_index && (curr_index != req_index))
 			continue;
-		snprintf(value, valuesz, "%s", v->val);
+		snprintf(value, valuesz-1, "%s", v->val);
 		return 0;
 	}
 
